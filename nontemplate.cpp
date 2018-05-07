@@ -5,7 +5,8 @@ namespace Pic10b{
 
     class vector{
       private:
-        double* the_data;
+        template <Typename T>;
+        T* the_data;
         size_t the_size;
         size_t the_capacity;
 
@@ -41,29 +42,31 @@ namespace Pic10b{
 
 
     /** ************************* THE BIG 4 ************************* **/
+    template <Typename T>;
     vector::vector() 
       : the_data(nullptr), the_size(0), the_capacity(INIT_CAP) {
 
-        the_data = new double[the_capacity];
+        the_data = new T[the_capacity];
     }
-
+    
+    template <Typename T>;
     vector::vector( const vector& source )
       : the_data(nullptr), the_size(source.the_size), 
         the_capacity(source.the_capacity) {
 
-        the_data = new double[the_capacity];
+        the_data = new T[the_capacity];
 
         // Deep copy of internal array
         for ( int i = 0 ; i < the_size ; ++i ){
             the_data[i] = source.the_data[i];
         }
     }
-
+    template <Typename T>;
     vector& vector::operator=( const vector& rhs ) {
         if ( this != &rhs ) {     // Self-assignment?
             // Release old memory and request more 
             delete[] the_data;
-            the_data = new double[rhs.the_capacity];
+            the_data = new T[rhs.the_capacity];
 
             // Shallow copy non-pointers
             the_size = rhs.the_size;
