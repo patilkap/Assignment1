@@ -1,4 +1,3 @@
-//NONTEMPLATED VERSION
 #include <iostream>   // std::ostream, std::cout
 
 namespace Pic10b{
